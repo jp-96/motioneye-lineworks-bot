@@ -10,6 +10,7 @@
     "zx": "^6.1.0"
   },
   "scripts": {
+    "test": "jest",
     "login": "npx zx package.json.md -- clasp-login",
     "logout": "npx zx package.json.md -- clasp-logout",
     "pull": "npx zx package.json.md -- pull-appscript",

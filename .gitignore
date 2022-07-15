@@ -343,3 +343,5 @@ out
 
 /package-lock.json
 yarn.lock
+
+package.json.md.mjs
