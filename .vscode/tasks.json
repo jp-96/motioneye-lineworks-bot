@@ -1,0 +1,92 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "GAS ログイン",
+            "type": "shell",
+            "command": "npx",
+            "args": [
+                "zx",
+                "package.json.md",
+                "--",
+                "clasp-login",
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "GAS ログアウト",
+            "type": "shell",
+            "command": "npx",
+            "args": [
+                "zx",
+                "package.json.md",
+                "--",
+                "clasp-logout",
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "GAS クローン",
+            "type": "shell",
+            "command": "npx",
+            "args": [
+                "zx",
+                "package.json.md",
+                "--",
+                "clone-apps",
+                "${input:scriptId}",
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "GAS ビルドとプッシュ",
+            "type": "shell",
+            "command": "npx",
+            "args": [
+                "zx",
+                "package.json.md",
+                "--",
+                "build-push",
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "GAS プル",
+            "type": "shell",
+            "command": "npx",
+            "args": [
+                "zx",
+                "package.json.md",
+                "--",
+                "pull-appscript",
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "GAS オープン",
+            "type": "shell",
+            "command": "npx",
+            "args": [
+                "zx",
+                "package.json.md",
+                "--",
+                "clasp-open",
+            ],
+            "problemMatcher": []
+        },
+    ],
+    "inputs": [
+        {
+            "id": "scriptId",
+            "description": "スクリプト ID",
+            "default": "",
+            "type": "promptString"
+        },
+    ]
+}

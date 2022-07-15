@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+    "@google/clasp": "^2.4.1",
+    "@types/google-apps-script": "^1.0.47",
+    "@types/jest": "^27.5.1",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.2",
+    "zx": "^6.1.0"
+  },
+  "scripts": {
+    "login": "npx zx package.json.md -- clasp-login",
+    "logout": "npx zx package.json.md -- clasp-logout",
+    "pull": "npx zx package.json.md -- pull-appscript",
+    "build": "npx zx package.json.md -- build-push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
