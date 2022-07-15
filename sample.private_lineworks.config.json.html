@@ -1,21 +1,20 @@
 {
     "apps": [
         {
-            "label": "Bot Test",
-            "description": "Google Apps Script",
-            "clientId": "",
-            "clientSecret": "",
-            "serviceAccount": "",
-            "privateKeyFilename": "",
+            "label": "設定",
+            "description": "motioneye-lineworks-botの設定",
+            "clientId": "(LINE WORKS API2.0アプリのClient ID)",
+            "clientSecret": "(LINE WORKS API2.0アプリのClient Secret)",
+            "serviceAccount": "(LINE WORKS API2.0アプリのService Account)",
+            "privateKeyFilename": "(API2.0アプリのPrivate Keyで発行したファイル名[*.key.html])",
             "userOption": {
-                "botId": "",
-                "LineworksTest": {
-                    "botId": "",
-                    "channelId": "",
-                    "userId": ""
-                }
+                "botId": "(Bot登録時に確認したBot ID)",
+                "channelId": "(監査で確認したトークルームID)",
+                "storageFolderId": "(GoogleドライブのmotionEye用フォルダID)",
+                "storageCleanUpDays": 14,
+                "storageFreeSizeThreshold": "3GB"
             }
         }
     ],
-    "defaultAppLabel": "Bot Test"
+    "defaultAppLabel": "設定"
 }
