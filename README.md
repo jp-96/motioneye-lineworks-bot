@@ -46,7 +46,7 @@
 [LINE WORKS Developer Console](https://developers.worksmobile.com/jp/?lang=ja)を開き、`Bot`を`登録`します。
 
 |#|項目|内容|説明|
-|---|---|---|---|
+|:---:|---|---|---|
 |1|「プロフィール画像」|(任意)|お好みのBotの画像|
 |2|Bot名|テストBot|Botの表示名|
 |3|「説明」|Google Apps Script 連携テスト|Botの説明|
@@ -81,7 +81,7 @@
 [LINE WORKS Developer Console](https://developers.worksmobile.com/jp/?lang=ja)を開き、サイドメニューの`API 2.0`で、`アプリの新規追加`を行います。
 
 |#|項目|内容|説明|
-|---|---|---|---|
+|:---:|---|---|---|
 |1|アプリ名|(ユニークな名前)|組織内で重複しないアプリ名|
 |2|アプリの説明|(アプリの説明)||
 |3|Client ID|(自動生成)||
@@ -122,7 +122,7 @@
 `./src/private_lineworks.config.json.html`ファイルの値を設定します。
 
 |#|項目|内容|説明|
-|---|---|---|---|
+|:---:|---|---|---|
 |1|apps[].clientId|API2.0アプリのClient ID|コピー|
 |2|apps[].clientSecret|API2.0アプリのClient Secret|コピー|
 |3|apps[].serviceAccount|API2.0アプリのService Account|発行後、コピー|
@@ -168,20 +168,21 @@ Private Keyの発行/再発行でダウンロードしたファイルの名前�
 次のユーザーとして実行:「自分（your.account@example.com）」  
 アクセスできるユーザー:「全員」  
 1. ウェブアプリ urlをコピーする（BotのCallback URLとする）
+1. `Google Apps Script`側の`appsscript.json`ファイルの内容が変更されているので、VS Codeのメニュー `ターミナル` > `タスクの実行`で、`GAS プル`を選択し、ローカル環境にファイルをコピーする
 
 ## BotのCallback有効化
 
 [LINE WORKS Developer Console](https://developers.worksmobile.com/jp/?lang=ja)を開き、登録済みの`Bot`を`修正`します。
 
-|#|項目|内容|説明|
-|---|---|---|---|
+|  #  |項目|内容|説明|
+|:---:|---|---|---|
 |1|Callback URL|On||
 |2|(URL)       |(コピーしたウェブアプリ url)||
 |3|(チェックボックス)|（すべて選択）|メンバーが送信可能なメッセージタイプ|
 
 ## 動作確認
 
-トークグループで、`動体検知`メッセージのリンク`#-1`をタップすると、Botからメッセージが返信されます。
+トークグループで、`動体検知`メッセージのリンク`#9999`をタップすると、Botからメッセージが返信されます(テストファイルがないので、「（データなし）」が返信されます)。
 
 # motionEye連携
 
@@ -190,8 +191,8 @@ Private Keyの発行/再発行でダウンロードしたファイルの名前�
 `Motion Notifications` の `Call A Web Hook`を 次のように`ON`に設定します。
 これにより、`motionEye`で動体検知されると、`Web Hook URL`がアクセスされ、`Google Apps Script`から`LINE WORKS`へ`トーク`が送信されます。
 
-| # |項目|設定値|
-|---|---|------|
+|  #  |項目|設定値|
+|:---:|---|------|
 | 1 | Call A Web Hook | ON |
 | 2 | Web Hook URL | (Google Apps Script ウェブアプリのURL)?year=%Y&&month=%m&&day=%d&&hour=%H&&minute=%M&&second=%S&&framenumber=%q&&eventnumber=%v&&motioneye=started |
 | 3 | HTTP method | POST (json) |
@@ -202,8 +203,8 @@ Private Keyの発行/再発行でダウンロードしたファイルの名前�
 
 `File storage`の設定で、画像や動画を保存できるように設定し、同時に、`Googleドライブ`へ保存（アップロード）できるように設定します。
 
-| # |項目|設定値|
-|---|---|------|
+|  #  |項目|設定値|
+|:---:|---|------|
 | 1 |Storage Device|Custom Path|
 | 2 |Root directory|/var/lib/motioneye/Camera1|
 | 3 |Upload Media Files|ON|
@@ -214,5 +215,9 @@ Private Keyの発行/再発行でダウンロードしたファイルの名前�
 | 8 |Include Subfolders |ON|
 | 9 |Clean Cloud | ON |
 |10 |Authorization key| (Obtain keyで取得) |
+|11 |Call A Web Hook | ON |
+|12 |Web Hook URL | (Google Apps Script ウェブアプリのURL)?year=%Y&&month=%m&&day=%d&&hour=%H&&minute=%M&&second=%S&&framenumber=%q&&eventnumber=%v&&filepath=%f&&motioneye=file |
+|13 |HTTP method | POST (json) |
 
-※ `Location`は、`apps[].userOption.storageFolderId`で指定したフォルダです。
+※ `Location`は、`apps[].userOption.storageFolderId`で指定したフォルダです。  
+※ `File storage`の`Web Hook URL`は、`Motion Notifications` のそれとは異なります。

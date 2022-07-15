@@ -183,7 +183,7 @@ function parsePostback_(postback: string) {
 }
 
 function testSendToChannel() {
-    sendMotionEyeNotification_(-1);
+    sendMotionEyeNotification_(9999);
     sendMotionEyeFileUrls_('(タイトル)','(サブタイトル)', 'https://example.com/fileurl/jpg', 'https://example.com/fileurl/mp4');
     sendTextMessage_('(テスト - メッセージ)');
 }
